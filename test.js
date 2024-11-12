@@ -29,3 +29,15 @@ test('as url', (t) => {
   assert.equal(dir, "google.com!82/more")
   assert.equal(filename, "index.php!that=all")
 })
+
+test('with number (dotted)', (t) => {
+  const { dir, filename } = yo("https://aiispq.org/a-propos/bottin-des-membres/users-page/1/")
+  assert.equal(dir, "aiispq.org/a-propos/bottin-des-membres/users-page")
+  assert.notEqual(filename, "0.0.0.1")
+})
+
+test('with number', (t) => {
+  const { dir, filename } = yo("https://aiispq.org/a-propos/bottin-des-membres/users-page/1/")
+  assert.equal(dir, "aiispq.org/a-propos/bottin-des-membres/users-page")
+  assert.equal(filename, "1")
+})
